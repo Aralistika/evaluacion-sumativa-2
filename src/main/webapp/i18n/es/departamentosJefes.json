@@ -1,0 +1,25 @@
+{
+  "evsum2App": {
+    "departamentosJefes": {
+      "home": {
+        "title": "Departamentos Jefes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Departamentos Jefes",
+        "createOrEditLabel": "Crear o editar Departamentos Jefes",
+        "notFound": "Ningún Departamentos Jefes encontrado"
+      },
+      "created": "Un nuevo Departamentos Jefes ha sido creado con el identificador {{ param }}",
+      "updated": "Un Departamentos Jefes ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Departamentos Jefes ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Departamentos Jefes {{ id }}?"
+      },
+      "detail": {
+        "title": "Departamentos Jefes"
+      },
+      "id": "ID",
+      "departamentos": "Departamentos",
+      "jefes": "Jefes"
+    }
+  }
+}

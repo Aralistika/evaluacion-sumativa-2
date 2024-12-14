@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-departamentos-jefes-heading"
+        data-cy="DepartamentosJefesCreateUpdateHeading"
+        jhiTranslate="evsum2App.departamentosJefes.home.createOrEditLabel"
+      >
+        Crear o editar Departamentos Jefes
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="evsum2App.departamentosJefes.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_departamentos" jhiTranslate="evsum2App.departamentosJefes.departamentos"
+            >Departamentos</label
+          >
+          <select
+            class="form-control"
+            id="field_departamentos"
+            data-cy="departamentos"
+            name="departamentos"
+            formControlName="departamentos"
+            [compareWith]="compareDepartamentos"
+          >
+            <option [ngValue]="null"></option>
+            @for (departamentosOption of departamentosSharedCollection; track $index) {
+              <option [ngValue]="departamentosOption">{{ departamentosOption.nombredepartamento }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_jefes" jhiTranslate="evsum2App.departamentosJefes.jefes">Jefes</label>
+          <select class="form-control" id="field_jefes" data-cy="jefes" name="jefes" formControlName="jefes" [compareWith]="compareJefes">
+            <option [ngValue]="null"></option>
+            @for (jefesOption of jefesSharedCollection; track $index) {
+              <option [ngValue]="jefesOption">{{ jefesOption.nombrejefe }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

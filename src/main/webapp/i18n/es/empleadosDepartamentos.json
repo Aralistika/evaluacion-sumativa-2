@@ -1,0 +1,25 @@
+{
+  "evsum2App": {
+    "empleadosDepartamentos": {
+      "home": {
+        "title": "Empleados Departamentos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Empleados Departamentos",
+        "createOrEditLabel": "Crear o editar Empleados Departamentos",
+        "notFound": "Ningún Empleados Departamentos encontrado"
+      },
+      "created": "Un nuevo Empleados Departamentos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Empleados Departamentos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Empleados Departamentos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Empleados Departamentos {{ id }}?"
+      },
+      "detail": {
+        "title": "Empleados Departamentos"
+      },
+      "id": "ID",
+      "empleados": "Empleados",
+      "departamentos": "Departamentos"
+    }
+  }
+}

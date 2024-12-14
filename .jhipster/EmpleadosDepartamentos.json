@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20241214024638"
+  },
+  "dto": "no",
+  "fields": [],
+  "jpaMetamodelFiltering": false,
+  "name": "EmpleadosDepartamentos",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nombreempleado",
+      "otherEntityName": "empleados",
+      "relationshipName": "empleados",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombredepartamento",
+      "otherEntityName": "departamentos",
+      "relationshipName": "departamentos",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

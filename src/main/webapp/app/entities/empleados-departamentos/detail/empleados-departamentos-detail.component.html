@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (empleadosDepartamentos(); as empleadosDepartamentosRef) {
+      <div>
+        <h2 data-cy="empleadosDepartamentosDetailsHeading">
+          <span jhiTranslate="evsum2App.empleadosDepartamentos.detail.title">Empleados Departamentos</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ empleadosDepartamentosRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="evsum2App.empleadosDepartamentos.empleados">Empleados</span></dt>
+          <dd>
+            @if (empleadosDepartamentos()!.empleados) {
+              <div>
+                <a [routerLink]="['/empleados', empleadosDepartamentos()!.empleados?.id, 'view']">{{
+                  empleadosDepartamentosRef.empleados?.nombreempleado
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="evsum2App.empleadosDepartamentos.departamentos">Departamentos</span></dt>
+          <dd>
+            @if (empleadosDepartamentos()!.departamentos) {
+              <div>
+                <a [routerLink]="['/departamentos', empleadosDepartamentos()!.departamentos?.id, 'view']">{{
+                  empleadosDepartamentosRef.departamentos?.nombredepartamento
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/empleados-departamentos', empleadosDepartamentosRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

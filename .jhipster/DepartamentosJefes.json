@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20241214024952"
+  },
+  "dto": "no",
+  "fields": [],
+  "jpaMetamodelFiltering": false,
+  "name": "DepartamentosJefes",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nombredepartamento",
+      "otherEntityName": "departamentos",
+      "relationshipName": "departamentos",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombrejefe",
+      "otherEntityName": "jefes",
+      "relationshipName": "jefes",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

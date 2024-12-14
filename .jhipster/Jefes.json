@@ -1,0 +1,23 @@
+{
+  "annotations": {
+    "changelogDate": "20241214024232"
+  },
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "nombrejefe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefonojefe",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Jefes",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

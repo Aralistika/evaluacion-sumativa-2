@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="DepartamentosJefesHeading">
+    <span jhiTranslate="evsum2App.departamentosJefes.home.title">Departamentos Jefes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="evsum2App.departamentosJefes.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-departamentos-jefes"
+        [routerLink]="['/departamentos-jefes/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="evsum2App.departamentosJefes.home.createLabel">Crear nuevo Departamentos Jefes</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (departamentosJefes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="evsum2App.departamentosJefes.home.notFound">Ningún Departamentos Jefes encontrado</span>
+    </div>
+  }
+
+  @if (departamentosJefes && departamentosJefes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="departamentos.nombredepartamento">
+              <div class="d-flex">
+                <span jhiTranslate="evsum2App.departamentosJefes.departamentos">Departamentos</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="jefes.nombrejefe">
+              <div class="d-flex">
+                <span jhiTranslate="evsum2App.departamentosJefes.jefes">Jefes</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (departamentosJefes of departamentosJefes; track trackId(departamentosJefes)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/departamentos-jefes', departamentosJefes.id, 'view']">{{ departamentosJefes.id }}</a>
+              </td>
+              <td>
+                @if (departamentosJefes.departamentos) {
+                  <div>
+                    <a [routerLink]="['/departamentos', departamentosJefes.departamentos.id, 'view']">{{
+                      departamentosJefes.departamentos.nombredepartamento
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (departamentosJefes.jefes) {
+                  <div>
+                    <a [routerLink]="['/jefes', departamentosJefes.jefes.id, 'view']">{{ departamentosJefes.jefes.nombrejefe }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/departamentos-jefes', departamentosJefes.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/departamentos-jefes', departamentosJefes.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(departamentosJefes)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

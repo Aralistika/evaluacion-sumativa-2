@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-empleados-departamentos-heading"
+        data-cy="EmpleadosDepartamentosCreateUpdateHeading"
+        jhiTranslate="evsum2App.empleadosDepartamentos.home.createOrEditLabel"
+      >
+        Crear o editar Empleados Departamentos
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="evsum2App.empleadosDepartamentos.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_empleados" jhiTranslate="evsum2App.empleadosDepartamentos.empleados">Empleados</label>
+          <select
+            class="form-control"
+            id="field_empleados"
+            data-cy="empleados"
+            name="empleados"
+            formControlName="empleados"
+            [compareWith]="compareEmpleados"
+          >
+            <option [ngValue]="null"></option>
+            @for (empleadosOption of empleadosSharedCollection; track $index) {
+              <option [ngValue]="empleadosOption">{{ empleadosOption.nombreempleado }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_departamentos" jhiTranslate="evsum2App.empleadosDepartamentos.departamentos"
+            >Departamentos</label
+          >
+          <select
+            class="form-control"
+            id="field_departamentos"
+            data-cy="departamentos"
+            name="departamentos"
+            formControlName="departamentos"
+            [compareWith]="compareDepartamentos"
+          >
+            <option [ngValue]="null"></option>
+            @for (departamentosOption of departamentosSharedCollection; track $index) {
+              <option [ngValue]="departamentosOption">{{ departamentosOption.nombredepartamento }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
