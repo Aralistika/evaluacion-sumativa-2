@@ -1,0 +1,3 @@
+org.springframework.test.context.ContextCustomizerFactory = com.aiep.evsum2.\
+    config.SqlTestContainersSpringContextCustomizerFactory,com.aiep.evsum2.\
+    config.KafkaTestContainersSpringContextCustomizerFactory

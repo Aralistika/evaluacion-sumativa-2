@@ -1,0 +1,18 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: evsum2
+services:
+  mssql:
+    extends:
+      file: ./mssql.yml
+      service: mssql
+    profiles:
+      - ''
+      - prod
+  kafka:
+    extends:
+      file: ./kafka.yml
+      service: kafka
+  zookeeper:
+    extends:
+      file: ./kafka.yml
+      service: zookeeper
